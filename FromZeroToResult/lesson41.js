@@ -27,11 +27,11 @@ const restorantData = {
 
 function isOpen(prop) {
     let answer = '';
-    prop ? answer = 'Открыто' : answer = 'Закрито';
+    prop ? answer = 'Открыто' : answer =  'Закрито';
 
     return answer;
 }
-
+ 
 console.log(isOpen(restorantData.openNow));
 
 function isAverageLunchPriceTrue(fDish, sDish, average) {
