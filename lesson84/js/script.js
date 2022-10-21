@@ -174,7 +174,7 @@ window.addEventListener('DOMContentLoaded', () =>{
     // Class for new menucards
 
     class MenuCard {
-        constructor(src, alt, title, description, price, parentSelector, ...classes){// Створюємо порядок данний
+        constructor(src, alt, title, description, price, parentSelector, ...classes){// Створюємо порядок данний REST operator ...rest
             this.src = src;
             this.alt = alt;
             this.title = title;
@@ -192,8 +192,8 @@ window.addEventListener('DOMContentLoaded', () =>{
 
         render(){ // Створюємо блок 
             const element = document.createElement('div');
+            console.log(this.classes);
             if (this.classes.length === 0) {
-
                 this.element = 'menu__item';
                 element.classList.add(this.element);
 
@@ -222,8 +222,61 @@ window.addEventListener('DOMContentLoaded', () =>{
         'Меню "Фитнес"',
         'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
         9,
-        '.menu .container',
-        'menu__item',
-        'big'
+        '.menu .container'
     ).render();
+
+    //Work with server Forms server Xammp
+
+    const forms = document.querySelectorAll('form');
+
+    const message = {
+        loading: "завантаження",
+        success: "Дякую скоро зв'яжимось",
+        failure: " В чомусь проблема..."
+    };
+    
+    forms.forEach(item => {
+        postData(item);
+    });
+
+    function postData(form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const statusMessage = document.createElement('div');
+
+            statusMessage.classList.add('status');
+            statusMessage.textContent = message.loading;
+            form.append(statusMessage);
+
+            const request = new XMLHttpRequest();
+            request.open("POST", 'server.php');
+
+            request.setRequestHeader("Content-type", "aplication/json"); //  1 Тип контенту, 2 Заголовок  | 
+            const formData = new FormData(form);
+
+            const object = {};
+            formData.forEach(function(value, key) {
+                object[key] = value;
+            });
+
+            const json =JSON.stringify(object);// Stringify Конвертує будьякий звичайний об'єкт в format JSON
+
+            request.send(json); // Відсилаємо тіло форми на сервер
+
+            request.addEventListener('load', () => {
+                if(request.status === 200){// 200 це позитивний код-відповідь від сервера
+                    console.log(request.response);
+                    statusMessage.textContent = message.success;
+                    form.reset();
+                    setTimeout(() =>{
+                        statusMessage.remove()
+
+                    }, 2000);
+                }else{
+                    statusMessage.textContent = message.failure;
+                }
+            })
+        });
+    }
 });
