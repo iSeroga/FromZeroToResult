@@ -1,0 +1,23 @@
+{
+  "name": "food_page",
+  "version": "1.0.0",
+  "description": "One of steps to grown in programming",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iSeroga/FromZeroToResult.git"
+  },
+  "author": "Serhii",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iSeroga/FromZeroToResult/issues"
+  },
+  "homepage": "https://github.com/iSeroga/FromZeroToResult#readme",
+  "devDependencies": {
+    "json-serve": "^0.1.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
