@@ -1,29 +1,21 @@
 'use strict'
 
+setTimeout(() => console.log('timeout'));
 
-// console.log(1);
+Promise.resolve()
+    .then(() => console.log("promise"));
 
-// setTimeout(()=> {
-//     console.log('timeout')
-// }, 2000);
+queueMicrotask(() => console.log("message"));
 
-// setTimeout(()=> {
-//     console.log('timeout_4000')
-// }, 4000);
+Promise.resolve()
+    .then(() => console.log("promise2"));
 
-// console.log(2);
+    console.log('code');
 
-/////////////////////////////////////////
-let k = 1
-function count () {
-    for (let i = 0; i < 1e9; i++) {
-        k++;
-    }
-    alert('done');
-}
-count();
-
-setTimeout( () =>{
-    console.log(1);
-}, 0)
-console.log (2);
+    // () =>{}
+    // microtasks then /catch /finally /await
+    // render (page)
+    // () => {}
+    // micro
+    // render
+    //() => {}    // macrotask

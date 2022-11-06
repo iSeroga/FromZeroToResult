@@ -1,14 +1,29 @@
-// const compose = 
-//     (...fns) => {
-//         (x) => {
-//             fns.reduceRight((res, fn) => fn(res),x)
-//         }
-//     };
+'use strict'
 
 
-const add1 = function(a){return a + 1}
-const addAll3 = function(a,b,c){return a + b + c}
+// console.log(1);
 
-const composeWithArgs = (...fns) => fns.reduceRight((f,g) => (...args) => g(f(...args)));
+// setTimeout(()=> {
+//     console.log('timeout')
+// }, 2000);
 
-console.log(composeWithArgs(add1,addAll3)(1,2,3));
+// setTimeout(()=> {
+//     console.log('timeout_4000')
+// }, 4000);
+
+// console.log(2);
+
+/////////////////////////////////////////
+let k = 1
+function count () {
+    for (let i = 0; i < 1e9; i++) {
+        k++;
+    }
+    alert('done');
+}
+count();
+
+setTimeout( () =>{
+    console.log(1);
+}, 0)
+console.log (2);
