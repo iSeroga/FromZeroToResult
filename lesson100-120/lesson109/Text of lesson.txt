@@ -1,0 +1,20 @@
+Angular: 
+- node.JS (хочаб встановити )
+- TypeScript (хочаб теорія)
+- webPack (використовується в середині ангуляра)
+- MVC pattern (шаблон який ділить на три частини (візуална, контролююча і виконуюча))
+- Angular (documentation)
+
+//////////////////////////////////////////////////////////////
+
+React (library):
+- JSX (preprocessor)
+- Babel 
+- webPack
+- React
+- node.JS (хочаб встановити )
+
+Vue.JS
+- webPack
+- Vue
+- node.JS (хочаб встановити )
