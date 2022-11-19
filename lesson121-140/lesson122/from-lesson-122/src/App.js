@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import {Component, Fragment} from 'react';
 
 import './App.css';
 
@@ -29,7 +29,7 @@ class WhoAmI extends Component {
       const {name, surname, link} = this.props;
       const {position, years} = this.state
       return (
-        <div>
+        <Fragment>
           <button onClick={this.nextYear}>{this.state.text}</button>
           <h1>My name is: {name}, surname - {surname}, age - {years}, position - {position}</h1>
           <a href={link}>My profile</a>
@@ -37,7 +37,7 @@ class WhoAmI extends Component {
             <span>Введіть посаду</span>
             <input type='text' onChange={(e) => this.commitInputChanges(e, "some color")}/>
           </form>
-        </div>
+        </Fragment>
       );
   }
 
