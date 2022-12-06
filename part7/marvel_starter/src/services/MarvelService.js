@@ -33,4 +33,4 @@ class MarvelService {
     }
 }
 
-export default MarvelService;
+export default MarvelService; 
