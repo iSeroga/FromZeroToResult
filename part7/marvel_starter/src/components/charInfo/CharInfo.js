@@ -1,5 +1,5 @@
 import { Component } from 'react';
-//import { propTypes } from 'prop-types';
+import { PropTypes } from 'prop-types';
 
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -128,11 +128,7 @@ const View = ({char}) => {
     </>
     )
 }
-
+ CharInfo.propTypes = {
+    charId: PropTypes.number
+ }
 export default CharInfo;
-// 1 До 10 коміксів відображати
-// 2 Якщо немає коміксів то напис немає коміксів
-//3 підправити картинку
-
-//
-//

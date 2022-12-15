@@ -1,7 +1,10 @@
 import {Component} from 'react';
+import React from 'react';
 import styled from 'styled-components';
-
+import BootstrapTest from './BootstrapTest'
+ 
 import './App.css';
+//import { extend } from 'jquery';
 
 const EmpItem = styled.div`
   padding:20px ;
@@ -75,10 +78,84 @@ const Wrapper = styled.div`
   width: 600px;
   margin: 80px auto 0 auto;
 `;
+const DynamicGreating = (props) => {
+  return(
+    <div className={'mb-3 p-3 border border-' + props.color}  >
+        {/* {props.children} */}
+        {
+          React.Children.map(props.children, child => {
+              return React.cloneElement(child, {className: "shadow p-3 m-3 border rounded"})
+          })
+        }
+    </div>
+  )
+}
+
+const HelloGreatings = () => {
+  return(
+    <div style={{'width': '600px', 'margin': "0 auto"}}>
+      <DynamicGreating color={'primary'}>
+        <h2>ASDASD</h2>
+        
+      </DynamicGreating>
+    </div>
+  )
+}
+
+const Message = (props) =>{
+  return(
+    <h2>Counter is {props.counter}</h2>
+  )
+}
+class Counter extends Component {
+  state = {
+    counter: 0, 
+  }
+  changeCounter = () => {
+    this.setState(({counter}) => ({
+       counter: counter + 1
+    }))
+  } 
+   render() {
+    return(
+      <>
+      {this.props.render(this.state.counter)}
+      <button className={'btn btn-primary'}
+      onClick={this.changeCounter}>
+        Click me
+      </button>
+      
+      </>
+    )
+   }
+}
 
 function App() {
   return (
     <Wrapper>
+      <Counter render={counter => (
+        <Message counter={counter}/>
+      )}/>
+
+
+      <HelloGreatings/>
+
+      <BootstrapTest
+        left= {
+          <DynamicGreating color={'primary'}>
+              <h2>ASDASD</h2>
+              <h2> Hard cock</h2>
+              <h1>Pidor</h1>
+            </DynamicGreating>
+        }
+        right = {
+              <DynamicGreating color={'primary'}>
+                  <h2>right</h2>
+                  <h2> Hard cock</h2>
+              </DynamicGreating>
+        }
+      />
+
       <WhoAmI name= "John" surname="Smith" link="facebook.com"/>
       <WhoAmI name="alex" surname="Johnson" link="normlink.com"/>
     </Wrapper>
